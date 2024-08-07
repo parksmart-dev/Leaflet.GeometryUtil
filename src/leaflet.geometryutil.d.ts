@@ -1,5 +1,5 @@
 import * as L from "leaflet";
-import { LatLngLiteral, Layer } from "leaflet"
+import { LatLngLiteral, Layer, LatLngExpression,Map,LatLng,Point,Polyline,Polygon } from "leaflet"
 
 interface LayerPointRelation<LayerType extends Layer = Layer> {
     layer: LayerType;
@@ -11,7 +11,8 @@ interface LatLngWithDistance extends LatLngLiteral {
     distance: number;
 }
 
-declare module "leaflet" {
+declare module "leaflet-new" {
+
     namespace Polyline {
         function _flat(latlngs: LatLngExpression[]): boolean;
     }
@@ -75,5 +76,4 @@ declare module "leaflet" {
     }
 }
 
-declare const GeometryUtil: typeof L.GeometryUtil;
-export default GeometryUtil;
+export default L.GeometryUtil;
